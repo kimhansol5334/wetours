@@ -58,12 +58,28 @@ exports.login = catchAsync(async (req,res,next) => {
 
 });
 
+exports.logout = (req,res) => {
+    res.cookie('jwt','loggedout', {
+        expires: new Date(Date.now() + 10 * 1000),
+        httpOnly: true
+    })
+    res.status(200).json({
+        status: 'success'
+    })
+    console.log(res.cookie);
+}
+
 exports.protect = catchAsync(async (req,res,next) => {
     // 1) Getting token and check of it's there
     let token;
       if(req.headers.authorization && req.headers.authorization.startsWith('Bearer')) {
+        console.log("Token from Authorization header:", req.headers.authorization);
          token = req.headers.authorization.split(' ')[1];
+      }else if(req.cookies.jwt) {
+        console.log("Token from Cookie:", req.cookies.jwt);
+        token = req.cookies.jwt
       }
+      console.log("Token:", token);
 
       if(!token) {
         return next(new AppError('You are not logged in!', 401))
