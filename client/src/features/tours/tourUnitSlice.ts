@@ -1,10 +1,10 @@
 import { createSlice, createAsyncThunk, PayloadAction } from '@reduxjs/toolkit';
 import axios from 'axios';
-import { Tours } from '../../models/tourModels';
+import { Tour } from '../../models/tourModels';
 
-export const getAllTours = createAsyncThunk('tours/getAllTours', async (data, thunkApi) => {
+export const getTourById = createAsyncThunk('tours/getTourById', async (id: string, thunkApi) => {
   try {
-    const response = await axios.get<Tours>(`${process.env.REACT_APP_API_URL}/tours`);
+    const response = await axios.get<Tour>(`${process.env.REACT_APP_API_URL}/tours/${id}`);
     return response.data;
   } catch (error: any) {
     return thunkApi.rejectWithValue(error.message);
@@ -14,7 +14,7 @@ export const getAllTours = createAsyncThunk('tours/getAllTours', async (data, th
 interface TourState {
   loading: boolean;
   error: null | string;
-  data: null | Tours;
+  data: null | Tour;
 }
 
 const initialState = {
@@ -23,24 +23,24 @@ const initialState = {
   data: null,
 } as TourState;
 
-const tourSlice = createSlice({
-  name: 'tour',
+const tourUnitSlice = createSlice({
+  name: 'tourunit',
   initialState,
   reducers: {},
   extraReducers(builder) {
     builder
-      .addCase(getAllTours.pending, (state, action) => {
+      .addCase(getTourById.pending, (state, action) => {
         state.loading = true;
       })
-      .addCase(getAllTours.fulfilled, (state, action: PayloadAction<Tours>) => {
+      .addCase(getTourById.fulfilled, (state, action: PayloadAction<Tour>) => {
         state.loading = false;
         state.data = action.payload;
       })
-      .addCase(getAllTours.rejected, (state, action: PayloadAction<any>) => {
+      .addCase(getTourById.rejected, (state, action: PayloadAction<any>) => {
         state.loading = false;
         state.error = action.payload;
       });
   },
 });
 
-export default tourSlice.reducer;
+export default tourUnitSlice.reducer;

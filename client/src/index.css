@@ -1,3 +1,8 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+
+body {
+    padding: 20px;  /* 1rem 패딩. 테일윈드의 p-4와 동일합니다. */
+  }

@@ -5,11 +5,9 @@ import Router from './Router';
 import { Provider } from 'react-redux';
 import store from './store';
 
-const root = ReactDOM.createRoot(
-  document.getElementById('root') as HTMLElement
-);
+const root = ReactDOM.createRoot(document.getElementById('root') as HTMLElement);
 root.render(
   <Provider store={store}>
     <Router />
-  </Provider>
+  </Provider>,
 );

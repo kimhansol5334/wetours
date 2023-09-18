@@ -1,7 +1,7 @@
 import { configureStore } from '@reduxjs/toolkit';
 import counterSlice from './features/counters/counterSlice';
+import tourUnitSlice from './features/tours/tourUnitSlice';
 import tourSlice from './features/tours/tourSlice';
-
 
 // redux '스토어' 를 생성 한다.   * (하단 링크 공식문서를 참조) *
 
@@ -12,7 +12,8 @@ import tourSlice from './features/tours/tourSlice';
 const store = configureStore({
   reducer: {
     counter: counterSlice,
-    tours: tourSlice
+    tours: tourSlice,
+    tour: tourUnitSlice,
   },
 });
 

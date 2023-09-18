@@ -1,0 +1,26 @@
+{
+    "parser": "@typescript-eslint/parser",
+    "plugins": ["react", "@typescript-eslint"],
+    "extends": [
+      "eslint:recommended",
+      "plugin:react/recommended",
+      "plugin:prettier/recommended"
+    ],
+    "rules": {
+      "@typescript-eslint/explicit-module-boundary-types": "off",
+      "prettier/prettier": ["error", { "endOfLine": "auto" }],
+      "no-unused-vars": "off" 
+      // ### "no-unused-vars": "off"  추가하여 undefined 관련 에러 방지
+    },
+    "settings": {
+      "react": {
+        "version": "detect"
+      }
+    },
+    
+      "env": {
+        "node": true,
+        "browser": true
+      }
+    
+  }
