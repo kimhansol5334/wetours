@@ -8,7 +8,10 @@ const Nav = () => {
       <Link to="/" className="font-thin hover:bg-55c57a hover:text-white hover:shadow-custom hover:-translate-y-0.5">
         ALL TOURS
       </Link>
-      <img src={logo} alt="logo" className="w-16"></img>
+      <Link to="/">
+        <img src={logo} alt="logo" className="w-16"></img>
+      </Link>
+
       <Link
         to="/login"
         className="font-thin hover:bg-55c57a hover:text-white hover:shadow-custom hover:-translate-y-0.5"

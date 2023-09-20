@@ -6,3 +6,21 @@
 body {
     padding: 20px;  /* 1rem 패딩. 테일윈드의 p-4와 동일합니다. */
   }
+
+  .gradient-text {
+    background-clip: text;
+    -webkit-background-clip: text;
+    color: transparent;
+    -webkit-text-fill-color: transparent;
+  }
+
+ 
+
+  .custom-outline:hover {
+    border: none;
+    border-radius: 10px;
+    outline: 12px solid #48bb78; 
+    outline-offset: 15px;
+    box-shadow: 0 0 5px #48bb78; 
+    transition: outline-color 0.3s, box-shadow 0.3s; 
+  }
