@@ -13,6 +13,8 @@ const Main = () => {
 
   const { data, error, loading } = useAppSelector((state) => state.tours);
 
+  const tours = data?.data.data;
+
   console.log(data);
 
   return (
@@ -21,7 +23,7 @@ const Main = () => {
         <div> loading ....</div>
       ) : (
         data &&
-        data.data.data.map((tour) => (
+        tours?.map((tour) => (
           <div className=" border  " key={tour._id}>
             <MemoizedTour tour={tour} />
           </div>
