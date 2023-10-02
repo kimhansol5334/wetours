@@ -1,34 +1,31 @@
 import React, { FC } from 'react';
 import { TourData } from '../../models/tourModels';
-
-interface TourProps {
-  tour: TourData | undefined;
-}
+import { TourProps } from '../../models/tourModels';
 
 const DetailSecondContainer: FC<TourProps> = ({ tour }) => {
   return (
     <div className="relative h-[100vh] ">
-      <div className="h-[100vh] transform -skew-y-6 origin-top-left bg-[#f7f7f7]"></div>
-      <div className="mt-10 absolute top-10 font-semibold left-1/2 translate-x-[-50%] text-black text-3xl tracking-widest bg-gradient-to-r from-start to-end gradient-text">
+      <div className="h-[100vh] transform -skew-y-6 origin-top-left bg-default"></div>
+      <div className="absolute top-10 right-0 lg:left-1/2 translate-x-[-50%] mt-10 text-black text-3xl text-center font-semibold tracking-widest bg-gradient-to-r from-start to-end gradient-text">
         {tour?.name}
       </div>
-      <div className="w-full h-[50vh] absolute top-[25vh] left-1/2 translate-x-[-50%] flex p-16">
-        <div className="mr-10 w-1/2">
+      <div className="absolute p-5 lg:flex h-[50vh] w-full top-[25vh] lg:left-1/2 lg:translate-x-[-50%] lg:p-16">
+        <div className="lg:w-1/2 mr-10">
           <div className="p-5 text-gray-500 ">YOU ARE GOING TO FALL IN LOVE WITH NATURE!</div>
           <div className="py-5 pl-5 mr-24">{tour?.description}</div>
         </div>
-        <div className="relative w-1/2 h-full">
+        <div className="relative hidden lg:block lg:h-full w-1/2">
           <img
             src={`${process.env.PUBLIC_URL}/img/${tour?.images[0]}`}
-            className="block h-48 absolute -top-[10%] -left-10 shadow-2xl hover:z-10 transform hover:scale-110 transition-transform duration-300 custom-outline"
+            className="absolute block h-48 -top-[10%] -left-10 shadow-2xl hover:z-10 transform hover:scale-110 transition-transform duration-300 custom-outline"
           ></img>
           <img
             src={`${process.env.PUBLIC_URL}/img/${tour?.images[1]}`}
-            className="block h-48 absolute top-0 right-[20%] shadow-2xl hover:z-10 transform hover:scale-110 transition-transform duration-300 custom-outline"
+            className="absolute block h-48 top-0 right-[20%] shadow-2xl hover:z-10 transform hover:scale-110 transition-transform duration-300 custom-outline"
           ></img>
           <img
             src={`${process.env.PUBLIC_URL}/img/${tour?.images[2]}`}
-            className="block h-48 absolute top-20 left-[10%] shadow-2xl hover:z-10 transform hover:scale-110 transition-transform duration-300 custom-outline"
+            className="absolute block h-48 top-20 left-[10%] shadow-2xl hover:z-10 transform hover:scale-110 transition-transform duration-300 custom-outline"
           ></img>
         </div>
       </div>

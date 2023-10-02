@@ -54,15 +54,15 @@ const userSchema = new mongoose.Schema({
 })
 
 // Todays homework! lets learn how this works
-userSchema.pre('save', async function(next){
-    // Only run this function if password was actually modified
-    if(!this.isModified('password')) return next();
+userSchema.pre('save', async function(next) {
+    if (!this.isModified('password') || !this.isNew) return next();
+
+    // 이미 해시된 비밀번호인지 확인
 
     this.password = await bcrypt.hash(this.password, 12);
-
     this.passwordConfirm = undefined;
     next();
-})
+});
 
 userSchema.pre('save', function(next) {
     if(!this.isModified('password') || this.isNew) return next()
@@ -76,9 +76,20 @@ userSchema.pre(/^find/, function(next) {
   next();
 });
 
-userSchema.methods.correctPassword = async function(candidatePassword, userPassword) {
-    return bcrypt.compare(candidatePassword, userPassword)
-}
+userSchema.methods.correctPassword = async function(
+    candidatePassword,
+    userPassword
+  ) {
+    bcrypt.compare('test1234', "$2a$12$Q0grHjH9PXc6SxivC8m12.2mZJ9BbKcgFpwSG4Y1ZEII8HJVzWeyS"
+    , function(err, res) {
+        if (err) {
+            console.error(err);
+        } else {
+            console.log(res);  // 이 값이 true가 되어야 함
+        }
+    });
+    return await bcrypt.compare(candidatePassword, userPassword);
+  };
 
 userSchema.methods.changedPasswordAfter = function(JWTTimestamp) {
     if(this.passwordChangedAt) {

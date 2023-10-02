@@ -1,13 +1,8 @@
 import React, { FC } from 'react';
-import { Link } from 'react-router-dom';
 import TourImage from './TourImage';
 import TourCenter from './TourCenter';
 import TourBottom from './TourBottom';
-import { TourData } from '../../models/tourModels';
-
-interface TourProps {
-  tour: TourData;
-}
+import { TourProps } from '../../models/tourModels';
 
 const Tour: FC<TourProps> = ({ tour }) => {
   return (

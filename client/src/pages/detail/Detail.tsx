@@ -3,21 +3,16 @@ import { useLocation } from 'react-router-dom';
 import { useEffect } from 'react';
 import { useAppSelector, useAppDispatch } from '../../hooks/useTypeSelector';
 import { getTourById } from '../../features/tours/tourUnitSlice';
-import logo from '../assets/img/logo-white.png';
 import DetailFirstContainer from './DetailFirstContainer';
-import { TourData } from '../../models/tourModels';
 import DetailSecondContainer from './DetailSecondContainer';
+import DetailThirdContainer from './DetailThirdContainer';
+import DetailFourthContainer from './DetailFourthContainer';
+import DetailReviewContainer from './DetailReviewContainer';
 
-interface TourProps {
-  tour: TourData | undefined;
-}
-
-const Details: React.FC = () => {
+const Detail: React.FC = () => {
   const dispatch = useAppDispatch();
   const location = useLocation();
-  const { state } = location;
-
-  const id = state;
+  const { id, slug } = location.state;
 
   useEffect(() => {
     dispatch(getTourById(id));
@@ -28,10 +23,25 @@ const Details: React.FC = () => {
 
   return (
     <div>
-      <DetailFirstContainer tour={tour} />
-      <DetailSecondContainer tour={tour} />
+      {loading ? (
+        <div>loading...</div>
+      ) : (
+        <div>
+          {tour ? (
+            <>
+              <DetailFirstContainer tour={tour} />
+              <DetailSecondContainer tour={tour} />
+              <DetailThirdContainer tour={tour} />
+              <DetailFourthContainer />
+              <DetailReviewContainer tour={tour} slug={slug} />
+            </>
+          ) : (
+            <div>No data available</div>
+          )}
+        </div>
+      )}
     </div>
   );
 };
 
-export default Details;
+export default Detail;

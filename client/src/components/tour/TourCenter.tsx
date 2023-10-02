@@ -1,13 +1,9 @@
 import React, { FC } from 'react';
 import { format } from 'date-fns';
-import { TourData } from '../../models/tourModels';
+import { TourProps } from '../../models/tourModels';
 import { FiMapPin } from 'react-icons/fi';
 import { BsFlag, BsPerson } from 'react-icons/bs';
 import { AiOutlineSchedule } from 'react-icons/ai';
-
-interface TourProps {
-  tour: TourData;
-}
 
 const TourCenter: FC<TourProps> = ({ tour }) => {
   const date = new Date(tour.startDates[0]);
@@ -37,9 +33,9 @@ const TourCenter: FC<TourProps> = ({ tour }) => {
     },
   ];
   return (
-    <div className="text-sm font-light p-5 pb-3">
-      <div className="text-sm text-gray-600 font-light mb-2">{tour.summary}</div>
-      <div className="grid grid-cols-2 gap-2 text-xs text-gray-500 font-light mb-2">
+    <div className="px-7 py-7 text-sm font-light">
+      <div className=" mb-6 text-sm text-gray-600 font-light">{tour.summary}</div>
+      <div className="grid grid-cols-2 gap-4 mb-2 text-xs text-gray-500 font-light">
         {TOUR_ICON_DATA.map((icon) => (
           <div className="flex items-center" key={icon.id}>
             <div className="mr-2">{icon.icon}</div>

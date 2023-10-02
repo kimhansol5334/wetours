@@ -4,15 +4,30 @@
 
 
 body {
-    padding: 20px;  /* 1rem 패딩. 테일윈드의 p-4와 동일합니다. */
+    padding: 20px; 
   }
 
   .gradient-text {
     background-clip: text;
-    -webkit-background-clip: text;
+    background-size: 200% 100%;
     color: transparent;
+    -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
   }
+
+  .gradient-text:hover {
+    animation: slideTextGradient 2s linear;
+  }
+  
+  @keyframes slideTextGradient {
+    0% {
+      background-position: 200% 0;
+    }
+    100% {
+      background-position: -200% 0;
+    }
+  }
+
 
  
 
@@ -24,3 +39,21 @@ body {
     box-shadow: 0 0 5px #48bb78; 
     transition: outline-color 0.3s, box-shadow 0.3s; 
   }
+
+  .bg-default {
+    background-color: #f7f7f7;
+  }
+
+  .flex-all-center {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+
+  
+  
+  
+  
+  
+  

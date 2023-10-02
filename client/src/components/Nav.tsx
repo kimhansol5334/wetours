@@ -11,13 +11,20 @@ const Nav = () => {
       <Link to="/">
         <img src={logo} alt="logo" className="w-16"></img>
       </Link>
-
-      <Link
-        to="/login"
-        className="font-thin hover:bg-55c57a hover:text-white hover:shadow-custom hover:-translate-y-0.5"
-      >
-        LOG IN
-      </Link>
+      <div className="flex items-center">
+        <Link
+          to="/login"
+          className="font-thin hover:bg-55c57a hover:text-white hover:shadow-custom hover:-translate-y-0.5"
+        >
+          LOG IN
+        </Link>
+        <Link
+          to="/signup"
+          className="ml-10 px-6 py-3 font-thin border-white border rounded-full hover:bg-white hover:text-[#444444] hover:shadow-custom hover:-translate-y-0.5 transition-all duration-300 ease-in-out"
+        >
+          SIGN UP
+        </Link>
+      </div>
     </nav>
   );
 };

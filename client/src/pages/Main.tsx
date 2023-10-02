@@ -15,16 +15,14 @@ const Main = () => {
 
   const tours = data?.data.data;
 
-  console.log(data);
-
   return (
-    <div className=" p-20 grid md:grid-cols-3 md:gap-14 bg-[#F7F7F7]">
+    <div className="grid p-20 bg-default md:grid-cols-3 gap-5 md:gap-14">
       {loading ? (
         <div> loading ....</div>
       ) : (
         data &&
         tours?.map((tour) => (
-          <div className=" border  " key={tour._id}>
+          <div className="shadow-2xl" key={tour._id}>
             <MemoizedTour tour={tour} />
           </div>
         ))

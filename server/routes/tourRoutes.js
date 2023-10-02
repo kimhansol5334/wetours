@@ -57,12 +57,8 @@ router
     tourController.deleteTour
   );
 
-// router
-//   .route('/:tourId/reviews')
-//   .post(
-//      authController.protect,
-//      authController.restrictTo('user'),
-//      reviewController.createReview
-//   ) its duplicated,  so we have to find a better way.
+
+
+  //its duplicated,  so we have to find a better way.
 
 module.exports = router;

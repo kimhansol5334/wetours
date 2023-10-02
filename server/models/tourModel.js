@@ -140,26 +140,6 @@ const tourSchema = new mongoose.Schema({
     next()
   })
 
-  // tourSchema.pre('save', async function(next) {
-  //   const guidesPromises = this.guides.map(async id => await User.findById(id))
-  //   this.guides = await Promise.all(guidesPromises)
-    
-  //   next()
-  // })
-
-
-  // tourSchema.pre('save', function(next) {
-  //   console.log('save....')
-  //   next()
-  // })
-  
-  // tourSchema.post('save', function(doc, next) {
-  //   console.log(doc)
-  //   next()
-  // })
-
-  // tourSchema.pre('find', function(next){
-
   tourSchema.pre(/^find/, function(next){
     this.populate({
       path:'guides',
@@ -180,12 +160,6 @@ const tourSchema = new mongoose.Schema({
   // console.log(docs);
     next()
   })
-
-  // tourSchema.pre('aggregate', function(next){
-  //   this.pipeline().unshift({ $match: { secretTour: {$ne: true}}})
-  //   console.log(this.pipeline())
-  //   next()
-  // })
 
   const Tour = mongoose.model('Tour', tourSchema)
 
