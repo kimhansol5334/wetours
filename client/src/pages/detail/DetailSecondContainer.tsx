@@ -9,10 +9,10 @@ const DetailSecondContainer: FC<TourProps> = ({ tour }) => {
       <div className="absolute top-10 right-0 lg:left-1/2 translate-x-[-50%] mt-10 text-black text-3xl text-center font-semibold tracking-widest bg-gradient-to-r from-start to-end gradient-text">
         {tour?.name}
       </div>
-      <div className="absolute p-5 lg:flex h-[50vh] w-full top-[25vh] lg:left-1/2 lg:translate-x-[-50%] lg:p-16">
+      <div className="absolute h-[50vh] w-full p-5 lg:flex top-[25vh] lg:left-1/2 lg:translate-x-[-50%] lg:p-16">
         <div className="lg:w-1/2 mr-10">
           <div className="p-5 text-gray-500 ">YOU ARE GOING TO FALL IN LOVE WITH NATURE!</div>
-          <div className="py-5 pl-5 mr-24">{tour?.description}</div>
+          <div className="mr-24 py-5 pl-5">{tour?.description}</div>
         </div>
         <div className="relative hidden lg:block lg:h-full w-1/2">
           <img
