@@ -17,7 +17,9 @@ export const getAllReviewsOnTour = createAsyncThunk(
         url += `&page=${page}`;
       }
 
-      const response = await axios.get<Reviews>(url);
+      const response = await axios.get<Reviews>(url, {
+        withCredentials: true,
+      });
       return response.data;
     } catch (error: any) {
       return thunkApi.rejectWithValue(error.message);

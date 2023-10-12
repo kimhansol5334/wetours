@@ -22,7 +22,7 @@ const Nav = () => {
   };
 
   return (
-    <nav className="p-8 bg-[#444444] text-white h-[10vh] flex justify-between items-center">
+    <nav className=" flex justify-between items-center h-[10vh] p-8 bg-[#444444] text-white">
       <Link to="/" className="font-thin hover:bg-55c57a hover:text-white hover:shadow-custom hover:-translate-y-0.5">
         ALL TOURS
       </Link>

@@ -28,8 +28,7 @@ const Login = () => {
   useEffect(() => {
     if (data) {
       const token = data.token;
-      Cookies.set('jwt', token, { expires: 90 });
-      dispatch(login());
+      Cookies.set('jwt', token, { expires: 90, path: '/', sameSite: 'Lax' });
       navigate('/');
     }
   }, [data]);

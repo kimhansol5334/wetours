@@ -12,9 +12,30 @@ const globalErrorHandler = require("./controllers/errorControllers")
 const tourRouter = require("./routes/tourRoutes");
 const userRouter = require("./routes/userRoutes");
 const reviewRouter = require("./routes/reviewRoutes");
+const bookingRouter = require("./routes/bookingRoutes");
+const cookieParser = require('cookie-parser');
 
 const app = express();
 
+app.enable('trust proxy');
+
+app.use(cors({
+  origin: 'http://localhost:3000',  
+  credentials: true
+}));
+
+app.options('*', cors({
+  origin: 'http://localhost:3000',  
+  credentials: true
+}))
+
+
+
+app.use((req, res, next) => {
+  console.log(req.cookies);
+  next();
+});
+app.use(cookieParser());
 // Set security HTTP headers.
 app.use(helmet());
 
@@ -48,20 +69,17 @@ app.use(hpp({
 
 //////
 
-app.use(cors({
-  origin: 'http://localhost:3000',  
-  credentials: true
-}));
+
 
 app.use((req, res, next) => {
   req.requestTime = new Date().toISOString();
-  console.log(req.cookies)
   next();
 });
 
 app.use("/api/v1/tours", tourRouter);
 app.use("/api/v1/users", userRouter);
 app.use("/api/v1/reviews", reviewRouter);
+app.use("/api/v1/bookings", bookingRouter);
 
 app.all('*', (req, res, next) => {
   // res.status(404).json({

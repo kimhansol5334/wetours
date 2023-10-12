@@ -32,7 +32,11 @@ const DetailReviewContainer: FC<DetailProps> = ({ tour, slug }) => {
             <div className="skew-x-12">{review.review}</div>
           </div>
         ))}
-        <Link to={`/tour/${slug}/reviews`} state={{ tourId: tour._id }}>
+        <Link
+          to={`/tour/${slug}/reviews`}
+          state={{ tourId: tour._id }}
+          className="mt-5 px-6 py-3 bg-green-500 text-white text-sm font-light opacity-90 rounded-full hover:shadow-custom hover:-translate-y-0.5"
+        >
           View All Reviews
         </Link>
       </div>

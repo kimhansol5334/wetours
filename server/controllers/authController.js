@@ -71,6 +71,7 @@ exports.logout = (req,res) => {
 
 exports.protect = catchAsync(async (req,res,next) => {
     // 1) Getting token and check of it's there
+    console.log( req.cookies);
     let token;
       if(req.headers.authorization && req.headers.authorization.startsWith('Bearer')) {
         console.log("Token from Authorization header:", req.headers.authorization);
@@ -105,7 +106,7 @@ exports.protect = catchAsync(async (req,res,next) => {
 
 exports.restrictTo = (...roles) => {
     return (req, res, next) => {
-        console.log(req.user);
+        // console.log(req.user);
         if(!roles.includes(req.user.role)) {
             return next(new AppError('You do not have permission to perform this action', 403))
         }

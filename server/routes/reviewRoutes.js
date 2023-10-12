@@ -6,7 +6,7 @@ const router = express.Router({
     mergeParams:true
 }); //tourId 를 params로 받기위해서 하는 작업인것 같다.
 
-// router.use(authController.protect)
+router.use(authController.protect)
 
 router
   .route('/')
