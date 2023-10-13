@@ -44,6 +44,5 @@ const store = configureStore({
 export type RootState = ReturnType<typeof store.getState>;
 export type AppDispatch = typeof store.dispatch;
 
-export const persistor = persistStore(store); // 이것은 여러분의 애플리케이션에 persist/REHYDRATE 액션을 전송합니다.
-
+export const persistor = persistStore(store);
 export default store;

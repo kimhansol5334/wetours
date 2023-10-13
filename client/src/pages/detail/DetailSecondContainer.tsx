@@ -1,5 +1,4 @@
 import React, { FC } from 'react';
-import { TourData } from '../../models/tourModels';
 import { TourProps } from '../../models/tourModels';
 
 const DetailSecondContainer: FC<TourProps> = ({ tour }) => {

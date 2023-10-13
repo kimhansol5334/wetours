@@ -1,5 +1,5 @@
-import { createSlice, createAsyncThunk, PayloadAction } from '@reduxjs/toolkit';
 import axios from 'axios';
+import { createSlice, createAsyncThunk, PayloadAction } from '@reduxjs/toolkit';
 import { Reviews } from '../../models/ReviewModel';
 
 interface GetPostReviewPayload {
@@ -9,13 +9,13 @@ interface GetPostReviewPayload {
   review: string | null;
 }
 interface PostReviewState {
-  data: Reviews | null; // <-- 이 부분을 수정
+  data: Reviews | null;
   loading: boolean;
   error: string | null;
 }
 
 const initialState = {
-  data: null, // <-- 이 부분을 수정
+  data: null,
   loading: false,
   error: null,
 } as PostReviewState;

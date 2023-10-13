@@ -1,5 +1,5 @@
-import { createSlice, createAsyncThunk, PayloadAction } from '@reduxjs/toolkit';
 import axios from 'axios';
+import { createSlice, createAsyncThunk, PayloadAction } from '@reduxjs/toolkit';
 import { Tours } from '../../models/tourModels';
 
 export const getAllTours = createAsyncThunk('tours/getAllTours', async (data, thunkApi) => {

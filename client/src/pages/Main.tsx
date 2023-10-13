@@ -12,9 +12,8 @@ const Main = () => {
   }, [dispatch]);
 
   const { data, error, loading } = useAppSelector((state) => state.tours);
-
   const tours = data?.data.data;
-  // console.log(data);
+
   return (
     <div className="grid gap-5 p-20 bg-default md:grid-cols-3 md:gap-14">
       {loading ? (

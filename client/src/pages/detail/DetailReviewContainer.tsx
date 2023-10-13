@@ -1,7 +1,5 @@
-import React, { FC, useEffect } from 'react';
+import React, { FC } from 'react';
 import { Link } from 'react-router-dom';
-import { useAppSelector, useAppDispatch } from '../../hooks/useTypeSelector';
-import { getUserById } from '../../features/users/userUnitSlice';
 import { TourData } from '../../models/tourModels';
 
 interface DetailProps {
@@ -25,7 +23,7 @@ const DetailReviewContainer: FC<DetailProps> = ({ tour, slug }) => {
         {tour?.reviews.slice(0, 3).map((review) => (
           <div
             key={review.id}
-            className="flex w-[80%] items-center h-50 left-1/2 p-10 mb-6 bg-white shadow-2xl opacity-70 -skew-x-12"
+            className="flex items-center h-50 w-[80%] left-1/2 mb-6 p-10 bg-white shadow-2xl opacity-70 -skew-x-12"
           >
             <img
               src={`${process.env.PUBLIC_URL}/img/${review.user.photo}`}
@@ -38,7 +36,7 @@ const DetailReviewContainer: FC<DetailProps> = ({ tour, slug }) => {
         <Link
           to={`/tour/${slug}/reviews`}
           state={{ tourId: tour._id }}
-          className="inline-block mt-5 px-6 py-3 tracking-wider  text-green-500 underline underline-offset-8 font-light hover:-translate-y-1 hover:bg-green-500 hover:text-white"
+          className="inline-block mt-5 px-6 py-3 text-green-500 font-light tracking-wider underline underline-offset-8 hover:-translate-y-1 hover:bg-green-500 hover:text-white"
         >
           Read all stories →
         </Link>

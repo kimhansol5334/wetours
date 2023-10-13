@@ -22,7 +22,7 @@ const Login = () => {
   };
 
   const handleLogin = async () => {
-    await dispatch(tryLogin({ id, pw })); // <-- await를 사용해 비동기 작업 완료 대기
+    await dispatch(tryLogin({ id, pw }));
   };
 
   useEffect(() => {
@@ -43,7 +43,7 @@ const Login = () => {
         <div className="mb-1 text-base text-gray-500 font-medium">Password</div>
         <input className="p-3 bg-default w-full" type="password" value={pw} onChange={passwordHandler}></input>
         <button
-          className=" mt-6 px-8 py-3 bg-green-500 opacity-90 text-white text-sm font-light rounded-full hover:shadow-custom hover:-translate-y-0.5"
+          className="mt-6 px-8 py-3 bg-green-500 opacity-90 text-white text-sm font-light rounded-full hover:shadow-custom hover:-translate-y-0.5"
           onClick={handleLogin}
         >
           LOGIN

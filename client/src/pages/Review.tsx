@@ -8,9 +8,9 @@ const Review = () => {
   const navigate = useNavigate();
   const dispatch = useAppDispatch();
   const location = useLocation();
+  const [searchParams] = useSearchParams();
   const currentPath = location.pathname;
   const tourId = location.state?.tourId;
-  const [searchParams] = useSearchParams();
   const pageNo = parseInt(searchParams.get('page') || '1');
   const { data: userInfo } = useAppSelector((state) => state.trylogin);
   const userId = userInfo?.data.user._id;

@@ -17,13 +17,13 @@ const DetailBookingContainer: FC<TourProps> = ({ tour }) => {
   };
 
   return (
-    <div className="h-[80vh] bg-default flex-all-center">
-      <div className="p-5 bg-white h-[30%] w-[50%] flex-all-center shadow-2xl">
+    <div className="flex-all-center h-[80vh] bg-default">
+      <div className="flex-all-center h-[30%] w-[50%] p-5 bg-white shadow-2xl">
         <div className="mr-5">
-          <div className="text-xl mr-5 mb-2 bg-gradient-to-r from-start to-end gradient-text tracking-wider">
+          <div className="mr-5 mb-2 bg-gradient-to-r from-start to-end gradient-text text-xl tracking-wider">
             WHAT ARE YOU WAITING FOR?
           </div>
-          <div className="text-gray-500 font-light ">${tour.price}. Infinite memories. Make it yours today!</div>
+          <div className="text-gray-500 font-light">${tour.price}. Infinite memories. Make it yours today!</div>
         </div>
 
         <button

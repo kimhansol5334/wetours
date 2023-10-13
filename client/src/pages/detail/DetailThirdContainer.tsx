@@ -1,6 +1,6 @@
 import React, { FC } from 'react';
 import { TourProps } from '../../models/tourModels';
-import { CiClock2, CiMoneyCheck1 } from 'react-icons/ci';
+import { CiClock2 } from 'react-icons/ci';
 import { BsActivity, BsStar } from 'react-icons/bs';
 import { GoPeople } from 'react-icons/go';
 

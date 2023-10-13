@@ -1,5 +1,5 @@
-import { createSlice, createAsyncThunk, PayloadAction } from '@reduxjs/toolkit';
 import axios from 'axios';
+import { createSlice, createAsyncThunk, PayloadAction } from '@reduxjs/toolkit';
 import { Tour } from '../../models/tourModels';
 
 export const getTourById = createAsyncThunk('tours/getTourById', async (id: string, thunkApi) => {

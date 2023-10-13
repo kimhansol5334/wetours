@@ -21,7 +21,7 @@ exports.updateOne = Model => catchAsync(async(req, res,next) => {
 
     const doc = await Model.findByIdAndUpdate(req.params.id, req.body, {
      new: true,
-     runValidators: true // 이게 없으면 model에서 지정한 maxlength같은게 조건에 부적합해도 업데이트 해버림
+     runValidators: true
     })
  
     if (!doc) {
