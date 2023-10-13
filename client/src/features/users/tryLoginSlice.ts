@@ -8,13 +8,13 @@ interface GetLoginPayload {
 }
 
 interface LoginState {
-  data: LoginData | null; // <-- 이 부분을 수정
+  data: LoginData | null;
   loading: boolean;
   error: string | null;
 }
 
 const initialState = {
-  data: null, // <-- 이 부분을 수정
+  data: null,
   loading: false,
   error: null,
 } as LoginState;

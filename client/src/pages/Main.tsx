@@ -2,6 +2,7 @@ import React, { useEffect } from 'react';
 import { useAppSelector, useAppDispatch } from '../hooks/useTypeSelector';
 import { getAllTours } from '../features/tours/tourSlice';
 import Tour from '../components/tour/Tour';
+import logo from '../assets/img/logo-white.png';
 
 const Main = () => {
   const dispatch = useAppDispatch();
@@ -17,7 +18,7 @@ const Main = () => {
   return (
     <div className="grid gap-5 p-20 bg-default md:grid-cols-3 md:gap-14">
       {loading ? (
-        <div> loading ....</div>
+        <div className="h-[100vh] bg-default"></div>
       ) : (
         data &&
         tours?.map((tour) => (

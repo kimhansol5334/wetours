@@ -9,6 +9,8 @@ import DetailThirdContainer from './DetailThirdContainer';
 import DetailFourthContainer from './DetailFourthContainer';
 import DetailReviewContainer from './DetailReviewContainer';
 import DetailBookingContainer from './DetailBookingContainer';
+import logo from '../../assets/img/logo-white.png';
+import DetailMapContainer from './DetailMapContainer';
 
 const Detail: React.FC = () => {
   const dispatch = useAppDispatch();
@@ -25,13 +27,16 @@ const Detail: React.FC = () => {
   return (
     <div>
       {loading ? (
-        <div>loading...</div>
+        <div className="flex-all-center h-[100vh] bg-default">
+          <img src={logo}></img>
+        </div>
       ) : (
         <div>
           {tour ? (
             <>
               <DetailFirstContainer tour={tour} />
               <DetailSecondContainer tour={tour} />
+              <DetailMapContainer tour={tour} />
               <DetailThirdContainer tour={tour} />
               <DetailFourthContainer />
               <DetailReviewContainer tour={tour} slug={slug} />

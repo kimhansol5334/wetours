@@ -45,7 +45,7 @@ const DetailThirdContainer: FC<TourProps> = ({ tour }) => {
         alt="test"
         className="h-[90vh] w-full object-cover transform -skew-y-6 origin-top-left"
       />
-      <div className="absolute h-full w-full bottom-0 left-0  bg-gradient-to-r from-green-600 to-green-500 opacity-80 transform -skew-y-6 origin-top-left"></div>
+      <div className="absolute h-full w-full bottom-0 left-0  bg-gradient-to-r from-green-400 to-green-300 opacity-80 transform -skew-y-6 origin-top-left"></div>
       <div className="absolute grid grid-cols-2 gap-20 h-full w-full top-32 px-20 lg:grid-cols-4">
         {THIRD_CARD_DATA.map((card) => (
           <div
