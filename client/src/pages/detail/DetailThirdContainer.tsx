@@ -1,7 +1,7 @@
 import React, { FC } from 'react';
 import { TourProps } from '../../models/tourModels';
 import { CiClock2, CiMoneyCheck1 } from 'react-icons/ci';
-import { BsActivity } from 'react-icons/bs';
+import { BsActivity, BsStar } from 'react-icons/bs';
 import { GoPeople } from 'react-icons/go';
 
 const DetailThirdContainer: FC<TourProps> = ({ tour }) => {
@@ -31,11 +31,10 @@ const DetailThirdContainer: FC<TourProps> = ({ tour }) => {
     },
     {
       id: 4,
-      name: 'PRICE',
-      tail: '$',
-      description: `BOOK NOW !`,
-      icon: <CiMoneyCheck1 size="60" color="#6dc987" />,
-      content: tour?.price,
+      name: 'RATING',
+      description: `many people liked this tour!`,
+      icon: <BsStar size="60" color="#6dc987" />,
+      content: tour?.ratingsAverage,
     },
   ];
 

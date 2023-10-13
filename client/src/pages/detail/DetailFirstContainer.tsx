@@ -1,6 +1,7 @@
 import React, { FC } from 'react';
 import logo from '../../assets/img/logo-white.png';
 import { TourProps } from '../../models/tourModels';
+import { BsStar } from 'react-icons/bs';
 
 const DetailFirstContainer: FC<TourProps> = ({ tour }) => {
   return (

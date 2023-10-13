@@ -8,6 +8,7 @@ import DetailSecondContainer from './DetailSecondContainer';
 import DetailThirdContainer from './DetailThirdContainer';
 import DetailFourthContainer from './DetailFourthContainer';
 import DetailReviewContainer from './DetailReviewContainer';
+import DetailBookingContainer from './DetailBookingContainer';
 
 const Detail: React.FC = () => {
   const dispatch = useAppDispatch();
@@ -34,6 +35,7 @@ const Detail: React.FC = () => {
               <DetailThirdContainer tour={tour} />
               <DetailFourthContainer />
               <DetailReviewContainer tour={tour} slug={slug} />
+              <DetailBookingContainer tour={tour} />
             </>
           ) : (
             <div>No data available</div>
