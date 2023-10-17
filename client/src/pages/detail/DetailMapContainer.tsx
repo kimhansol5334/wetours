@@ -5,19 +5,16 @@ import { TourProps } from '../../models/tourModels';
 mapboxgl.accessToken = `${process.env.REACT_APP_MAPBOX_ACCESS_TOKEN}`;
 
 const DetailMapContainer: FC<TourProps> = ({ tour }) => {
-  console.log(tour);
   const mapContainer = useRef<HTMLDivElement | null>(null);
   const map = useRef<mapboxgl.Map | null>(null);
-  //   const [lng, setLng] = useState(0);
-  //   const [lat, setLat] = useState(0);
-  const [zoom, setZoom] = useState(9);
+  const [zoom, setZoom] = useState(4);
 
   useEffect(() => {
     const [lng, lat] = tour.startLocation.coordinates;
     if (!mapContainer.current || map.current) return;
     map.current = new mapboxgl.Map({
       container: mapContainer.current,
-      style: 'mapbox://styles/mapbox/basic-v9',
+      style: 'mapbox://styles/mapbox/light-v10',
       center: [lng, lat],
       zoom: zoom,
     });

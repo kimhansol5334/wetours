@@ -76,6 +76,14 @@ app.use((req, res, next) => {
   next();
 });
 
+app.get('/payment-success', (req, res) => {
+  res.send('<h1>Completed!</h1><p>Thank you!! Your payment is completed.</p>');
+});
+
+app.get('/payment-cancel', (req, res) => {
+  res.send('<h1>Failed!</h1><p>We are so sorry. Please try again!.</p>');
+});
+
 app.use("/api/v1/tours", tourRouter);
 app.use("/api/v1/users", userRouter);
 app.use("/api/v1/reviews", reviewRouter);

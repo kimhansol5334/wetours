@@ -12,6 +12,7 @@ const Nav = () => {
   const { data } = useAppSelector((state) => state.trylogin);
   const jwt = Cookies.get('jwt');
   const userName = data?.data.user.name;
+  const userImage = data?.data.user.photo;
 
   const handleLogout = async () => {
     Cookies.remove('jwt');
@@ -31,7 +32,10 @@ const Nav = () => {
       </Link>
       <div className="flex items-center">
         {jwt ? (
-          <button>{userName}</button>
+          <button className="flex-all-center">
+            <img src={`${process.env.PUBLIC_URL}/img/${userImage}`} className="w-8 rounded-full mr-2"></img>
+            {userName}
+          </button>
         ) : (
           <Link
             to="/login"

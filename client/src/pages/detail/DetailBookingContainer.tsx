@@ -13,12 +13,18 @@ const DetailBookingContainer: FC<TourProps> = ({ tour }) => {
   }, [dispatch]);
 
   const handleBooking = () => {
+    console.log(data);
     window.open(data?.session.url, '_blank', 'noopener, noreferrer');
   };
 
   return (
-    <div className="flex-all-center h-[80vh] bg-default">
-      <div className="flex-all-center h-[30%] w-[50%] p-5 bg-white shadow-2xl">
+    <div className="flex-all-center relative h-[80vh] bg-default overflow-hidden">
+      <img
+        src={`${process.env.PUBLIC_URL}/img/${tour?.images[0]}`}
+        className="absolute h-full w-full object-cover"
+      ></img>
+      <div className=" absolute -left-20 h-full w-3/5  bg-white opacity-80 -skew-x-12"></div>
+      <div className="flex-all-center h-[30%] w-[50%] p-5 bg-white shadow-2xl z-10">
         <div className="mr-5">
           <div className="mr-5 mb-2 bg-gradient-to-r from-start to-end gradient-text text-xl tracking-wider">
             WHAT ARE YOU WAITING FOR?

@@ -17,13 +17,13 @@ const DetailReviewContainer: FC<DetailProps> = ({ tour, slug }) => {
       />
       <div className="absolute h-full w-full top-0 left-0 z-[-1]  bg-gradient-to-r from-gray-100 to-gray-200 opacity-90"></div>
       <div className="absolute left-1/4">
-        <div className="mb-10 text-3xl font-semibold tracking-widest bg-gradient-to-r from-start to-end gradient-text">
+        <div className="mb-16 text-3xl font-semibold tracking-widest bg-gradient-to-r from-start to-end gradient-text">
           WE MAKE PEOPLE GENUINELY HAPPY
         </div>
         {tour?.reviews.slice(0, 3).map((review) => (
           <div
             key={review.id}
-            className="flex items-center h-50 w-[80%] left-1/2 mb-6 p-10 bg-white shadow-2xl opacity-70 -skew-x-12"
+            className="flex items-center h-50 w-[80%] left-1/2 mb-16 p-10 bg-white shadow-2xl opacity-70 -skew-x-12"
           >
             <img
               src={`${process.env.PUBLIC_URL}/img/${review.user.photo}`}

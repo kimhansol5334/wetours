@@ -36,7 +36,7 @@ const reviewSchema = new mongoose.Schema({
     this.populate({
         path:'user',
         select: 'name photo'
-    })
+    }).sort('-createdAt');
 
     next()
   })
