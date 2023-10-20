@@ -1,21 +1,15 @@
-import React, { FC, useEffect } from 'react';
+import React, { FC, useCallback } from 'react';
 import { TourProps } from '../../models/tourModels';
-import { useAppSelector, useAppDispatch } from '../../hooks/useTypeSelector';
-import { bookingOnTour } from '../../features/bookings/bookingSlice';
+import { useBooking } from '../../hooks/useBooking';
 
 const DetailBookingContainer: FC<TourProps> = ({ tour }) => {
-  const dispatch = useAppDispatch();
-  const { data, error, loading } = useAppSelector((state) => state.booking);
   const id = tour._id;
 
-  useEffect(() => {
-    dispatch(bookingOnTour({ id: id }));
-  }, [dispatch]);
+  const { data, error, loading } = useBooking(id);
 
-  const handleBooking = () => {
-    console.log(data);
+  const handleBooking = useCallback(() => {
     window.open(data?.session.url, '_blank', 'noopener, noreferrer');
-  };
+  }, []);
 
   return (
     <div className="flex-all-center relative h-[80vh] bg-default overflow-hidden">

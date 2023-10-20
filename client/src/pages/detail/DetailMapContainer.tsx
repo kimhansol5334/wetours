@@ -1,29 +1,9 @@
-import React, { useRef, useState, useEffect, FC } from 'react';
-import mapboxgl from 'mapbox-gl';
+import React, { FC } from 'react';
+import { useMapBox } from '../../hooks/useMapBox';
 import { TourProps } from '../../models/tourModels';
 
-mapboxgl.accessToken = `${process.env.REACT_APP_MAPBOX_ACCESS_TOKEN}`;
-
 const DetailMapContainer: FC<TourProps> = ({ tour }) => {
-  const mapContainer = useRef<HTMLDivElement | null>(null);
-  const map = useRef<mapboxgl.Map | null>(null);
-  const [zoom, setZoom] = useState(4);
-
-  useEffect(() => {
-    const [lng, lat] = tour.startLocation.coordinates;
-    if (!mapContainer.current || map.current) return;
-    map.current = new mapboxgl.Map({
-      container: mapContainer.current,
-      style: 'mapbox://styles/mapbox/light-v10',
-      center: [lng, lat],
-      zoom: zoom,
-    });
-
-    map.current.on('load', () => {
-      new mapboxgl.Marker().setLngLat([lng, lat]).addTo(map.current!);
-    });
-  }, [tour]);
-
+  const { mapContainer } = useMapBox({ startLocation: tour.startLocation });
   return (
     <div>
       <div

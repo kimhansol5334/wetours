@@ -33,7 +33,7 @@ const Nav = () => {
       <div className="flex items-center">
         {jwt ? (
           <button className="flex-all-center">
-            <img src={`${process.env.PUBLIC_URL}/img/${userImage}`} className="w-8 rounded-full mr-2"></img>
+            <img src={`${process.env.PUBLIC_URL}/img/${userImage}`} className="w-8 mr-2 rounded-full"></img>
             {userName}
           </button>
         ) : (
@@ -55,7 +55,7 @@ const Nav = () => {
         ) : (
           <Link
             to="/signup"
-            className="ml-10 px-6 py-3 font-thin border-white border rounded-full hover:bg-white hover:text-[#444444] hover:shadow-custom hover:-translate-y-0.5 transition-all duration-300 ease-in-out"
+            className="ml-10 px-6 py-3 font-thin border border-white rounded-full hover:bg-white hover:text-[#444444] hover:shadow-custom hover:-translate-y-0.5 transition-all duration-300 ease-in-out"
           >
             SIGN UP
           </Link>

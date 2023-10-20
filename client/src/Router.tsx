@@ -19,7 +19,7 @@ const Router = () => {
         <Route path="/tour/:slug" element={<Detail />} />
         <Route path="/tour/:slug/reviews" element={<Review />} />
       </Routes>
-      <Footer />
+      {/* <Footer /> */}
     </BrowserRouter>
   );
 };

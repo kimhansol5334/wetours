@@ -1,28 +1,19 @@
 import React from 'react';
 import { useLocation } from 'react-router-dom';
-import { useEffect } from 'react';
-import { useAppSelector, useAppDispatch } from '../../hooks/useTypeSelector';
-import { getTourById } from '../../features/tours/tourUnitSlice';
+import { useTourDetail } from '../../hooks/useTourDetail';
 import DetailFirstContainer from './DetailFirstContainer';
 import DetailSecondContainer from './DetailSecondContainer';
 import DetailThirdContainer from './DetailThirdContainer';
 import DetailFourthContainer from './DetailFourthContainer';
 import DetailReviewContainer from './DetailReviewContainer';
 import DetailBookingContainer from './DetailBookingContainer';
-import logo from '../../assets/img/logo-white.png';
 import DetailMapContainer from './DetailMapContainer';
+import logo from '../../assets/img/logo-white.png';
 
 const Detail: React.FC = () => {
-  const dispatch = useAppDispatch();
   const location = useLocation();
   const { id, slug } = location.state;
-
-  useEffect(() => {
-    dispatch(getTourById(id));
-  }, [dispatch]);
-
-  const { data, error, loading } = useAppSelector((state) => state.tour);
-  const tour = data?.data?.data;
+  const { tour, error, loading } = useTourDetail(id);
 
   return (
     <div>

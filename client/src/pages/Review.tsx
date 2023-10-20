@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import { format } from 'date-fns';
 import { useAppDispatch, useAppSelector } from '../hooks/useTypeSelector';
 import { useLocation, useSearchParams, useNavigate } from 'react-router-dom';
 import { getAllReviewsOnTour, setPage } from '../features/reviews/reviewOnTour';
@@ -45,46 +46,50 @@ const Review = () => {
   const reviews = reviewInfo?.data?.data;
 
   return (
-    <div className="relative p-20 h-[180vh]">
+    <div className="relative h-[180vh] p-20">
       <img className="absolute h-full top-0 left-0 opacity-20" src={`${process.env.PUBLIC_URL}/img/tour-1-1.jpg`}></img>
       {reviews?.map((review) => (
         <div
           key={review.id}
-          className="flex w-[60%] items-center h-40 mb-6 p-10 bg-default shadow-2xl opacity-80 outline outline-green-400  -skew-x-12"
+          className="flex items-center h-28 w-[60%] mb-6 p-10 bg-default shadow-2xl opacity-80 border border-gray-300 -skew-x-12"
         >
           <img
             src={`${process.env.PUBLIC_URL}/img/${review.user.photo}`}
             alt="profile"
-            className="h-full mr-4 rounded-full skew-x-12"
+            className="w-12 mr-4 rounded-full skew-x-12 border border-green-400"
           ></img>
           <div className="skew-x-12">{review.review}</div>
+          <div className="absolute flex-all-center right-5 bottom-2">
+            <p className="mr-5 text-gray-600">{review.user.name}</p>
+            <p className="text-gray-500 text-xs">{format(new Date(review.createdAt), 'MMM d')}</p>
+          </div>
         </div>
       ))}
       <div>
         <button
           onClick={(event) => handlePageChange(1, event)}
-          className="relative m-3 p-3 z-10 border bg-default text-black rounded-full outline-green-400 outline outline-4"
+          className="relative m-3 p-3 z-10 bg-default text-black border "
           value="1"
         >
           1
         </button>
         <button
           onClick={(event) => handlePageChange(2, event)}
-          className="relative m-3 p-3 z-10 border bg-default text-black rounded-full outline-green-400 outline outline-4"
+          className="relative m-3 p-3 z-10 border bg-default text-black "
           value="2"
         >
           2
         </button>
         <button
           onClick={(event) => handlePageChange(3, event)}
-          className="relative m-3 p-3 z-10 border bg-default text-black rounded-full outline-green-400 outline outline-4"
+          className="relative m-3 p-3 z-10 border bg-default text-black"
           value="3"
         >
           3
         </button>
       </div>
-      <div className="absolute m-4 p-5 h-[200px] w-[80%] opacity-80 bottom-10  bg-default">
-        <div className="mb-10 text-3xl text-center font-semibold tracking-widest bg-gradient-to-r from-start to-end gradient-text">
+      <div className="absolute h-[200px] w-[80%] bottom-10 m-4 p-5 bg-default opacity-80">
+        <div className="mb-10 bg-gradient-to-r from-start to-end gradient-text text-3xl text-center font-semibold tracking-widest">
           LEAVE YOUR COMMENT!!
         </div>
         <input
