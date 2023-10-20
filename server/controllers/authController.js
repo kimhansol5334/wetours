@@ -36,8 +36,13 @@ const createSendToken = (user, statusCode, res) => {
 }
 
 exports.signup = catchAsync(async (req, res, next) => {
-    const newUser = await User.create(req.body)
-    createSendToken(newUser, 201, res)
+    try {
+        const newUser = await User.create(req.body);
+        createSendToken(newUser, 201, res);
+    } catch (error) {
+        console.error("Signup Error:", error); 
+        next(error); 
+    }
 });
 
 exports.login = catchAsync(async (req, res, next) => {
