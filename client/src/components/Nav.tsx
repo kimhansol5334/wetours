@@ -1,25 +1,20 @@
 import React from 'react';
-import { useAppDispatch, useAppSelector } from '../hooks/useTypeSelector';
-import { Link, useNavigate } from 'react-router-dom';
+import { useAppSelector } from '../hooks/useTypeSelector';
+import { Link } from 'react-router-dom';
 import logo from '../assets/img/logo-white.png';
 import Cookies from 'js-cookie';
-import { persistor } from '../store';
-import { resetAuth } from '../features/users/authSlice';
+
+import { useLogout } from '../hooks/useLogout';
 
 const Nav = () => {
-  const dispatch = useAppDispatch();
-  const navigate = useNavigate();
+  const logout = useLogout();
   const { data } = useAppSelector((state) => state.trylogin);
   const jwt = Cookies.get('jwt');
   const userName = data?.data.user.name;
   const userImage = data?.data.user.photo;
 
   const handleLogout = async () => {
-    Cookies.remove('jwt');
-    dispatch(resetAuth());
-    await persistor.purge();
-    navigate('/');
-    window.location.reload();
+    logout();
   };
 
   return (
@@ -32,10 +27,10 @@ const Nav = () => {
       </Link>
       <div className="flex items-center">
         {jwt ? (
-          <button className="flex-all-center">
+          <Link to={`/mypage/${userName}`} className="flex-all-center">
             <img src={`${process.env.PUBLIC_URL}/img/${userImage}`} className="w-8 mr-2 rounded-full"></img>
             {userName}
-          </button>
+          </Link>
         ) : (
           <Link
             to="/login"

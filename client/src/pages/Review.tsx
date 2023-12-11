@@ -1,31 +1,22 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import { format } from 'date-fns';
 import { useAppDispatch, useAppSelector } from '../hooks/useTypeSelector';
-import { useLocation, useSearchParams, useNavigate } from 'react-router-dom';
-import { getAllReviewsOnTour, setPage } from '../features/reviews/reviewOnTour';
+import { useNavigate } from 'react-router-dom';
 import { postReview } from '../features/reviews/postReview';
+import { useReviewOnTour } from '../hooks/useReviewsOnTour';
+import { useUserInfo } from '../hooks/useUserInfo';
 
 const Review = () => {
   const navigate = useNavigate();
   const dispatch = useAppDispatch();
-  const location = useLocation();
-  const [searchParams] = useSearchParams();
-  const currentPath = location.pathname;
-  const tourId = location.state?.tourId;
-  const pageNo = parseInt(searchParams.get('page') || '1');
-  const { data: userInfo } = useAppSelector((state) => state.trylogin);
+  const { userInfo } = useUserInfo();
   const userId = userInfo?.data.user._id;
-
+  const { reviews, error, loading, tourId, currentPath } = useReviewOnTour();
   const [review, setReview] = useState('');
-
-  useEffect(() => {
-    dispatch(getAllReviewsOnTour({ id: tourId, page: pageNo }));
-  }, [pageNo, dispatch]);
 
   const handlePageChange = (page: number, event: React.MouseEvent) => {
     event.preventDefault();
 
-    dispatch(setPage(page));
     let queryParams = '';
     if (page) {
       queryParams += `page=${page}`;
@@ -41,9 +32,6 @@ const Review = () => {
   const handlePostReview = () => {
     dispatch(postReview({ tour: tourId, user: userId, rating: 5, review: review }));
   };
-
-  const { data: reviewInfo, error, loading } = useAppSelector((state) => state.reviews);
-  const reviews = reviewInfo?.data?.data;
 
   return (
     <div className="relative h-[180vh] p-20">

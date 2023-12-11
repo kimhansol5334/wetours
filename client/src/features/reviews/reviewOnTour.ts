@@ -44,11 +44,7 @@ const initialState = {
 const reviewSlice = createSlice({
   name: 'reviews',
   initialState,
-  reducers: {
-    setPage: (state, action) => {
-      state.page = action.payload;
-    },
-  },
+  reducers: {},
   extraReducers(builder) {
     builder
       .addCase(getAllReviewsOnTour.pending, (state, action) => {
@@ -64,7 +60,5 @@ const reviewSlice = createSlice({
       });
   },
 });
-
-export const { setPage } = reviewSlice.actions;
 
 export default reviewSlice.reducer;

@@ -22,6 +22,8 @@ export const useMapBox = ({ startLocation }: MapBoxProps) => {
       style: 'mapbox://styles/mapbox/light-v10',
       center: [lng, lat],
       zoom: zoom,
+      scrollZoom: false,
+      // boxZoom: false,
     });
 
     map.current.on('load', () => {

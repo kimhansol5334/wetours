@@ -12,6 +12,7 @@ import postReviewSlice from './features/reviews/postReview';
 import bookingSlice from './features/bookings/bookingSlice';
 import userSignUpSlice from './features/users/userSignUpSlice';
 import signUpAuthSlice from './features/users/signUpAuthSlice';
+import userDeleteSlice from './features/users/userDeleteSlice';
 
 const rootReducer = combineReducers({
   tours: tourSlice,
@@ -25,6 +26,7 @@ const rootReducer = combineReducers({
   postReview: postReviewSlice,
   booking: bookingSlice,
   signup: userSignUpSlice,
+  userDelete: userDeleteSlice,
 });
 
 const persistConfig = {

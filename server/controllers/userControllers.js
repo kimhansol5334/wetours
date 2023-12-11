@@ -3,6 +3,7 @@ const User = require('../models/userModel')
 const APIFeatures = require('../utils/apiFeatures')
 const catchAsync = require("../utils/catchAsync")
 const factory = require("./handlerFactory")
+const bcrypt = require('bcryptjs')
 
 const filterObj = (obj, ...allowedFields) => {
   const newObj = {};
@@ -62,7 +63,17 @@ exports.updateMe = catchAsync(async (req, res, next) => {
   });
 
 exports.deleteMe = catchAsync(async(req, res, next) => {
+  const user = await User.findById(req.user.id).select('+password');
+  // console.log(req.user.password)
+
+  if(!(await bcrypt.compare(req.body.password, user.password))) {
+    return next(new AppError('The given password is not correct', 
+    400
+    )
+   );
+  }
   await User.findByIdAndUpdate(req.user.id, {active: false})
+
 
   res.status(204).json({
     status:'success',
