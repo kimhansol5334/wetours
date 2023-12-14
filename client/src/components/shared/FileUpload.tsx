@@ -31,11 +31,9 @@ const FileUpload: React.FC = () => {
         withCredentials: true,
       });
 
-      // 업로드 성공 처리
       dispatch(updateUser(formData));
       console.log('업로드 성공:', response.data);
     } catch (error) {
-      // 업로드 실패 처리
       console.error('업로드 실패:', error);
     }
   };

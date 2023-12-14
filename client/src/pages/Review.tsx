@@ -45,7 +45,10 @@ const Review = () => {
 
   return (
     <div className="relative h-[180vh] p-20">
-      <img className="absolute h-full top-0 left-0 opacity-20" src={`${process.env.PUBLIC_URL}/img/tour-1-1.jpg`}></img>
+      <img
+        className="absolute h-full top-0 left-0 opacity-20"
+        src={`${process.env.REACT_APP_SERVER_URL}/public/img/tours/tour-1-1.jpg`}
+      ></img>
       {reviews?.map((review) => (
         <div
           key={review.id}
