@@ -13,6 +13,7 @@ import bookingSlice from './features/bookings/bookingSlice';
 import userSignUpSlice from './features/users/userSignUpSlice';
 import signUpAuthSlice from './features/users/signUpAuthSlice';
 import userDeleteSlice from './features/users/userDeleteSlice';
+import userPasswordChangeSlice, { userPasswordChange } from './features/users/userPasswordChangeSlice';
 
 const rootReducer = combineReducers({
   tours: tourSlice,
@@ -27,6 +28,7 @@ const rootReducer = combineReducers({
   booking: bookingSlice,
   signup: userSignUpSlice,
   userDelete: userDeleteSlice,
+  userPasswordChange: userPasswordChangeSlice,
 });
 
 const persistConfig = {
@@ -41,9 +43,7 @@ const store = configureStore({
   reducer: persistedReducer,
   middleware: (getDefaultMiddleware) =>
     getDefaultMiddleware({
-      serializableCheck: {
-        ignoredActions: ['persist/PERSIST'],
-      },
+      serializableCheck: false,
     }),
 });
 

@@ -8,13 +8,23 @@ const DetailBookingContainer: FC<TourProps> = ({ tour }) => {
   const { data, error, loading } = useBooking(id);
 
   const handleBooking = useCallback(() => {
-    window.open(data?.session.url, '_blank', 'noopener, noreferrer');
-  }, []);
+    if (data?.session?.url) {
+      window.open(data.session.url, '_blank', 'noopener, noreferrer');
+    }
+  }, [data]);
+
+  if (loading) {
+    return <div className="h-full w-full bg-red">Loading...</div>;
+  }
+
+  if (error) {
+    return <div>Error loading booking information.</div>;
+  }
 
   return (
     <div className="flex-all-center relative h-[80vh] bg-default overflow-hidden">
       <img
-        src={`${process.env.PUBLIC_URL}/img/${tour?.images[0]}`}
+        src={`${process.env.REACT_APP_SERVER_URL}/public/img/tours/${tour?.images[0]}`}
         className="absolute h-full w-full object-cover"
       ></img>
       <div className=" absolute -left-20 h-full w-3/5  bg-white opacity-80 -skew-x-12"></div>

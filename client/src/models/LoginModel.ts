@@ -5,3 +5,8 @@ export type LoginData = {
   token: string;
   data: { user: User };
 };
+
+export type UserData = {
+  status: string;
+  data: { user: User };
+};

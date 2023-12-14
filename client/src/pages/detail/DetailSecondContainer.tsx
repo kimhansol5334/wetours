@@ -15,15 +15,15 @@ const DetailSecondContainer: FC<TourProps> = ({ tour }) => {
         </div>
         <div className="relative hidden lg:block lg:h-full w-1/2">
           <img
-            src={`${process.env.PUBLIC_URL}/img/${tour?.images[0]}`}
+            src={`${process.env.REACT_APP_SERVER_URL}/public/img/tours/${tour?.images[0]}`}
             className="absolute block h-52 -top-[10%] -left-10 shadow-2xl rounded-md hover:z-10 transform hover:scale-110 transition-transform duration-300 custom-outline"
           ></img>
           <img
-            src={`${process.env.PUBLIC_URL}/img/${tour?.images[1]}`}
+            src={`${process.env.REACT_APP_SERVER_URL}/public/img/tours/${tour?.images[1]}`}
             className="absolute block h-52 top-3 right-[12%] shadow-2xl rounded-md hover:z-10 transform hover:scale-110 transition-transform duration-300 custom-outline"
           ></img>
           <img
-            src={`${process.env.PUBLIC_URL}/img/${tour?.images[2]}`}
+            src={`${process.env.REACT_APP_SERVER_URL}/public/img/tours/${tour?.images[2]}`}
             className="absolute block h-52 top-20 left-[10%] shadow-2xl rounded-md hover:z-10 transform hover:scale-110 transition-transform duration-300 custom-outline"
           ></img>
         </div>

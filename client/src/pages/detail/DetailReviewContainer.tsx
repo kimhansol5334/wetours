@@ -11,7 +11,7 @@ const DetailReviewContainer: FC<DetailProps> = ({ tour, slug }) => {
   return (
     <div className="relative h-[150vh] w-full p-24 leading-5">
       <img
-        src={`${process.env.PUBLIC_URL}/img/${tour?.images[1]}`}
+        src={`${process.env.REACT_APP_SERVER_URL}/public/img/tours/${tour?.images[1]}`}
         alt="test"
         className="absolute h-full w-full top-0 left-0 object-cover z-[-1] overflow-hidden"
       />
@@ -26,7 +26,7 @@ const DetailReviewContainer: FC<DetailProps> = ({ tour, slug }) => {
             className="relative flex items-center h-50 w-[80%] mb-16 p-10 bg-white shadow-2xl opacity-70 -skew-x-12"
           >
             <img
-              src={`${process.env.PUBLIC_URL}/img/${review.user.photo}`}
+              src={`${process.env.REACT_APP_SERVER_URL}/public/img/users/${review.user.photo}`}
               alt="profile"
               className="w-12 mr-4 border border-green-400 rounded-full skew-x-12 shadow-xl"
             ></img>

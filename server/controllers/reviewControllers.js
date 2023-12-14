@@ -1,5 +1,6 @@
 const Review = require('../models/reviewModel');
 const factory = require('./handlerFactory')
+const catchAsync = require("../utils/catchAsync")
 
 
 exports.setTourUserIds = (req,res,next) => {
@@ -17,3 +18,12 @@ exports.createReview = factory.createOne(Review);
 exports.deleteReview = factory.deleteOne(Review);
 exports.updateReview = factory.updateOne(Review);
 
+exports.checkReview = catchAsync(async (req, res) => {
+    try {
+      const { tourId, userId } = req.params;
+      const reviewExists = await Review.findOne({ tour: tourId, user: userId });
+      res.status(200).json({ exists: reviewExists !== null });
+    } catch (error) {
+      res.status(500).json({ message: error.message });
+    }
+  })

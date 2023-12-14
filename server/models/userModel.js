@@ -58,7 +58,7 @@ const userSchema = new mongoose.Schema({
 
 // Todays homework! lets learn how this works
 userSchema.pre('save', async function(next) {
-    if (!this.isModified('password') || !this.isNew) return next();
+    if (!this.isModified('password') ) return next();
 
     // 이미 해시된 비밀번호인지 확인
 

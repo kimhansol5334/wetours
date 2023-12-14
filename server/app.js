@@ -17,6 +17,7 @@ const cookieParser = require('cookie-parser');
 
 const app = express();
 
+app.use('/public', express.static('public'));
 app.enable('trust proxy');
 
 app.use(cors({

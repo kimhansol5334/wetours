@@ -6,7 +6,7 @@ const DetailFirstContainer: FC<TourProps> = ({ tour }) => {
   return (
     <div className="relative h-[80vh] w-full leading-5 inline-block overflow-hidden bg-default">
       <img
-        src={`${process.env.PUBLIC_URL}/img/${tour?.imageCover}`}
+        src={`${process.env.REACT_APP_SERVER_URL}/public/img/tours/${tour?.imageCover}`}
         alt="test"
         className="absolute h-[80vh] w-full object-cover transform -skew-y-6 origin-top-left"
       />

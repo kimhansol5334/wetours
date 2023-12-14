@@ -1,10 +1,12 @@
 import React, { useState } from 'react';
+import axios from 'axios';
 import { format } from 'date-fns';
 import { useAppDispatch, useAppSelector } from '../hooks/useTypeSelector';
 import { useNavigate } from 'react-router-dom';
 import { postReview } from '../features/reviews/postReview';
 import { useReviewOnTour } from '../hooks/useReviewsOnTour';
 import { useUserInfo } from '../hooks/useUserInfo';
+import useInputHandler from '../hooks/useInputHandler';
 
 const Review = () => {
   const navigate = useNavigate();
@@ -12,7 +14,7 @@ const Review = () => {
   const { userInfo } = useUserInfo();
   const userId = userInfo?.data.user._id;
   const { reviews, error, loading, tourId, currentPath } = useReviewOnTour();
-  const [review, setReview] = useState('');
+  const [review, handleReview] = useInputHandler('');
 
   const handlePageChange = (page: number, event: React.MouseEvent) => {
     event.preventDefault();
@@ -25,12 +27,20 @@ const Review = () => {
     navigate(`${currentPath}?${queryParams}`, { state: { tourId } });
   };
 
-  const handleReview = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setReview(e.target.value);
-  };
-
-  const handlePostReview = () => {
-    dispatch(postReview({ tour: tourId, user: userId, rating: 5, review: review }));
+  const handlePostReview = async () => {
+    try {
+      const response = await axios.get(`${process.env.REACT_APP_API_URL}/reviews/review-exists/${tourId}/${userId}`, {
+        withCredentials: true,
+      });
+      if (response.data.exists) {
+        alert('You have already reviewed this tour.');
+      } else {
+        dispatch(postReview({ tour: tourId, user: userId, rating: 5, review: review }));
+        window.location.reload();
+      }
+    } catch (error) {
+      console.error('Error checking review existence', error);
+    }
   };
 
   return (
@@ -42,7 +52,7 @@ const Review = () => {
           className="flex items-center h-28 w-[60%] mb-6 p-10 bg-default shadow-2xl opacity-80 border border-gray-300 -skew-x-12"
         >
           <img
-            src={`${process.env.PUBLIC_URL}/img/${review.user.photo}`}
+            src={`${process.env.REACT_APP_SERVER_URL}/public/img/users/${review.user.photo}`}
             alt="profile"
             className="w-12 mr-4 rounded-full skew-x-12 border border-green-400"
           ></img>

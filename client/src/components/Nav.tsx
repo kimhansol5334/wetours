@@ -1,21 +1,19 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
+import useLogout from '../hooks/useLogout';
 import { useAppSelector } from '../hooks/useTypeSelector';
+import { useUserInfo } from '../hooks/useUserInfo';
 import { Link } from 'react-router-dom';
 import logo from '../assets/img/logo-white.png';
 import Cookies from 'js-cookie';
 
-import { useLogout } from '../hooks/useLogout';
-
 const Nav = () => {
   const logout = useLogout();
-  const { data } = useAppSelector((state) => state.trylogin);
-  const jwt = Cookies.get('jwt');
-  const userName = data?.data.user.name;
-  const userImage = data?.data.user.photo;
+  const { userInfo } = useUserInfo();
 
-  const handleLogout = async () => {
-    logout();
-  };
+  const userName = userInfo?.data.user.name;
+  const userImage = userInfo?.data.user.photo;
+
+  console.log(userImage);
 
   return (
     <nav className=" flex justify-between items-center h-[10vh] p-8 bg-[#444444] text-white">
@@ -26,9 +24,12 @@ const Nav = () => {
         <img src={logo} alt="logo" className="w-16"></img>
       </Link>
       <div className="flex items-center">
-        {jwt ? (
+        {userInfo ? (
           <Link to={`/mypage/${userName}`} className="flex-all-center">
-            <img src={`${process.env.PUBLIC_URL}/img/${userImage}`} className="w-8 mr-2 rounded-full"></img>
+            <img
+              src={`${process.env.REACT_APP_SERVER_URL}/public/img/users/${userImage}`}
+              className="w-8 mr-2 rounded-full"
+            ></img>
             {userName}
           </Link>
         ) : (
@@ -40,10 +41,10 @@ const Nav = () => {
           </Link>
         )}
 
-        {jwt ? (
+        {userInfo ? (
           <button
             className="ml-10 font-thin hover:bg-55c57a hover:text-white hover:shadow-custom hover:-translate-y-0.5"
-            onClick={handleLogout}
+            onClick={logout}
           >
             LOG OUT
           </button>

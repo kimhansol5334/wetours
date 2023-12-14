@@ -5,7 +5,7 @@ const TourImage: FC<TourProps> = ({ tour }) => {
   return (
     <div className="relative inline-block h-[200px] w-full tracking-wider leading-5 overflow-hidden">
       <img
-        src={`${process.env.PUBLIC_URL}/img/${tour.imageCover}`}
+        src={`${process.env.REACT_APP_SERVER_URL}/public/img/tours/${tour.imageCover}`}
         alt="test"
         className="h-full w-full object-cover transform -skew-y-6 origin-top-left"
       />
