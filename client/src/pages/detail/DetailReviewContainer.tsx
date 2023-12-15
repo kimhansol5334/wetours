@@ -9,13 +9,13 @@ interface DetailProps {
 
 const DetailReviewContainer: FC<DetailProps> = ({ tour, slug }) => {
   return (
-    <div className="relative h-[150vh] w-full p-24 leading-5">
+    <div className="relative h-[120vh] w-full p-24 leading-5">
+      <div className="absolute h-full w-full bottom-0 left-0  bg-blue-200 opacity-50"></div>
       <img
-        src={`${process.env.REACT_APP_SERVER_URL}/public/img/tours/${tour?.images[1]}`}
+        src={`${process.env.REACT_APP_SERVER_URL}/public/img/tours/tour-2-2.jpg`}
         alt="test"
         className="absolute h-full w-full top-0 left-0 object-cover z-[-1] overflow-hidden"
       />
-      <div className="absolute h-full w-full top-0 left-0 z-[-1]  bg-gradient-to-r from-gray-100 to-gray-200 opacity-90"></div>
       <div className="absolute left-1/4">
         <div className="mb-16 text-3xl font-semibold tracking-widest bg-gradient-to-r from-start to-end gradient-text">
           WE MAKE PEOPLE GENUINELY HAPPY
@@ -37,7 +37,7 @@ const DetailReviewContainer: FC<DetailProps> = ({ tour, slug }) => {
         <Link
           to={`/tour/${slug}/reviews`}
           state={{ tourId: tour._id }}
-          className="inline-block mt-5 px-6 py-3 text-green-500 font-light tracking-wider underline underline-offset-8 hover:-translate-y-1 hover:bg-green-500 hover:text-white"
+          className="inline-block mt-5 px-6 py-3 text-white font-light tracking-wider underline underline-offset-8 hover:-translate-y-1 hover:bg-green-500 hover:text-white"
         >
           Read all stories →
         </Link>

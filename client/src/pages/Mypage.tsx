@@ -27,25 +27,23 @@ const Mypage = () => {
       <div className="absolute h-full w-full bottom-0 left-0  bg-gradient-to-r from-green-200 to-green-300 opacity-60 "></div>
       <div className="bg-default w-[30%] h-[60%] flex relative flex-col justify-around items-center rounded-xl">
         <div className=" text-center pt-2">
-          <div className="bg-gradient-to-r from-end to-start gradient-text text-3xl mb-3">{userData?.name}</div>
-          <div className="bg-gradient-to-r   tracking-wider font-light text-sm">{userData?.email}</div>
+          <div className="bg-gradient-to-r from-end to-start gradient-text text-3xl mb-3 tracking-wider">
+            {userData?.name}
+          </div>
+          <div className="bg-gradient-to-r text-green-500 tracking-wider font-light text-sm">{userData?.email}</div>
         </div>
-        <div className="w-[40%] rounded-full">
-          <img
-            src={`${process.env.REACT_APP_SERVER_URL}/public/img/users/${userData?.photo}`}
-            className="object-contain rounded-full"
-          ></img>
+        <div className="w-48 h-48 mb-12">
+          <FileUpload />
         </div>
-        <FileUpload />
         <div className="flex">
           <button
-            className="absolute bottom-3 left-3 p-3 bg-green-700 opacity-80 text-white text-sm font-light rounded-3xl hover:shadow-custom hover:-translate-y-0.5"
+            className="absolute bottom-3 left-3 p-2 bg-green-700 opacity-80 text-white text-sm font-light rounded-3xl hover:shadow-custom hover:-translate-y-0.5"
             onClick={changeModalHandler}
           >
             change password
           </button>
           <button
-            className="text-red-500 absolute bottom-3 right-3  px-3 py-3 bg-black opacity-80  text-sm font-light rounded-3xl hover:shadow-custom hover:-translate-y-0.5"
+            className="text-black absolute bottom-3 right-3  p-2 bg-red-500 opacity-80  text-sm font-light rounded-3xl hover:shadow-custom hover:-translate-y-0.5"
             onClick={deleteModalHandler}
           >
             delete account

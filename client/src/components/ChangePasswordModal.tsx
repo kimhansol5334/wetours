@@ -6,6 +6,7 @@ import { userPasswordChange } from '../features/users/userPasswordChangeSlice';
 import { ChangePasswordModalProps } from '../models/PropsModel';
 import { PATH } from '../constants/path/path';
 import { useNavigate } from 'react-router-dom';
+import InputField from './shared/InputField';
 
 const ChangePasswordModal: FC<ChangePasswordModalProps> = ({ isChangeModalOpen, setIsChangeModalOpen }) => {
   const dispatch = useAppDispatch();
@@ -54,22 +55,21 @@ const ChangePasswordModal: FC<ChangePasswordModalProps> = ({ isChangeModalOpen, 
   if (!isChangeModalOpen) return null;
   return (
     <div className=" fixed h-[100vh] top-0 left-0 bottom-0 right-0 bg-gray-300/60 z-999">
-      <div className="fixed z-1000 bg-white h-[50%] w-[30%] top-1/3 left-1/2 opacity-100 -translate-x-1/2 traslate-y-1/2 flex flex-col justify-around items-center">
+      <div className="fixed z-1000 bg-white h-[60%] w-[30%] top-1/3 left-1/2 opacity-100 -translate-x-1/2 traslate-y-1/2 flex flex-col justify-around items-center p-10">
         <button className="fixed z-1000 top-2 right-2" onClick={offModal}>
           x
         </button>
         {CHANGE_MODAL_INPUT_LIST.map((list) => (
           <div key={list.id}>
-            <div>{list.content}</div>
-            <input
-              className="border-2 border-black w-[60%] p-2"
-              value={list.value}
-              onChange={list.action}
-              type="password"
-            ></input>
+            <InputField label={list.content} type="password" value={list.value} onChange={list.action} />
           </div>
         ))}
-        <button onClick={handleChangePassword}>change</button>
+        <button
+          onClick={handleChangePassword}
+          className="px-8 py-2 bg-green-500 opacity-90 text-white text-sm font-light rounded-full hover:shadow-custom hover:-translate-y-0.5"
+        >
+          change
+        </button>
       </div>
     </div>
   );

@@ -1,20 +1,18 @@
 import React, { useState } from 'react';
-import axios from 'axios';
 import { format } from 'date-fns';
-import { useAppDispatch, useAppSelector } from '../hooks/useTypeSelector';
 import { useNavigate } from 'react-router-dom';
-import { postReview } from '../features/reviews/postReview';
 import { useReviewOnTour } from '../hooks/useReviewsOnTour';
 import { useUserInfo } from '../hooks/useUserInfo';
 import useInputHandler from '../hooks/useInputHandler';
+import RatingModal from '../components/RatingModal';
 
 const Review = () => {
   const navigate = useNavigate();
-  const dispatch = useAppDispatch();
   const { userInfo } = useUserInfo();
-  const userId = userInfo?.data.user._id;
   const { reviews, error, loading, tourId, currentPath } = useReviewOnTour();
   const [review, handleReview] = useInputHandler('');
+  const userImage = userInfo?.data.user.photo;
+  const [isRatingModalOpen, setIsRatingModalOpen] = useState(false);
 
   const handlePageChange = (page: number, event: React.MouseEvent) => {
     event.preventDefault();
@@ -27,33 +25,23 @@ const Review = () => {
     navigate(`${currentPath}?${queryParams}`, { state: { tourId } });
   };
 
-  const handlePostReview = async () => {
-    try {
-      const response = await axios.get(`${process.env.REACT_APP_API_URL}/reviews/review-exists/${tourId}/${userId}`, {
-        withCredentials: true,
-      });
-      if (response.data.exists) {
-        alert('You have already reviewed this tour.');
-      } else {
-        dispatch(postReview({ tour: tourId, user: userId, rating: 5, review: review }));
-        window.location.reload();
-      }
-    } catch (error) {
-      console.error('Error checking review existence', error);
-    }
+  const handleRatingModal = () => {
+    setIsRatingModalOpen(true);
   };
 
   return (
-    <div className="relative h-[180vh] p-20">
+    <div className="relative h-[130vh] p-20">
+      <div className="absolute h-full w-full bottom-0 left-0  bg-green-400 opacity-30 "></div>
       <img
         className="absolute h-full top-0 left-0 opacity-20"
-        src={`${process.env.REACT_APP_SERVER_URL}/public/img/tours/tour-1-1.jpg`}
+        src={`${process.env.REACT_APP_SERVER_URL}/public/img/tours/tour-4-cover.jpg`}
       ></img>
       {reviews?.map((review) => (
         <div
           key={review.id}
           className="flex items-center h-28 w-[60%] mb-6 p-10 bg-default shadow-2xl opacity-80 border border-gray-300 -skew-x-12"
         >
+          <div className="absolute top-2 right-2 text-sm">{review.rating}★</div>
           <img
             src={`${process.env.REACT_APP_SERVER_URL}/public/img/users/${review.user.photo}`}
             alt="profile"
@@ -89,22 +77,25 @@ const Review = () => {
           3
         </button>
       </div>
-      <div className="absolute h-[200px] w-[80%] bottom-10 m-4 p-5 bg-default opacity-80">
-        <div className="mb-10 bg-gradient-to-r from-start to-end gradient-text text-3xl text-center font-semibold tracking-widest">
-          LEAVE YOUR COMMENT!!
-        </div>
+      <div className="flex-all-center h-[200px] w-[80%] opacity-80">
+        <img
+          src={`${process.env.REACT_APP_SERVER_URL}/public/img/users/${userImage}`}
+          className="h-12 w-12 mr-2 rounded-full"
+        ></img>
         <input
-          className="w-[70%] h-[20%] m-5 p-5 bg-default border border-black"
+          className="w-[70%] h-[20%] bg-transparent m-5 p-5 border-b border-black focus:outline-none focus:border-pink-400"
           value={review}
           onChange={handleReview}
+          placeholder="leave your comment.."
         ></input>
         <button
-          onClick={handlePostReview}
-          className="mt-5 px-6 py-3 bg-green-500 text-white text-sm font-light opacity-90 rounded-full hover:shadow-custom hover:-translate-y-0.5"
+          onClick={handleRatingModal}
+          className="h-10 mt-5 px-6  bg-gray-400 text-white text-sm font-light opacity-90 rounded-full hover:shadow-custom hover:-translate-y-0.5"
         >
           POST
         </button>
       </div>
+      <RatingModal isRatingModalOpen={isRatingModalOpen} setIsRatingModalOpen={setIsRatingModalOpen} review={review} />
     </div>
   );
 };
