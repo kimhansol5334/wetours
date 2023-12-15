@@ -4,12 +4,9 @@ import { useReviewOnTour } from '../hooks/useReviewsOnTour';
 import axios from 'axios';
 import { useAppDispatch } from '../hooks/useTypeSelector';
 import { postReview } from '../features/reviews/postReview';
+import { RatingModalProps } from '../models/PropsModel';
 
-const RatingModal: FC<{
-  isRatingModalOpen: boolean;
-  setIsRatingModalOpen: React.Dispatch<React.SetStateAction<boolean>>;
-  review: string;
-}> = ({ isRatingModalOpen, setIsRatingModalOpen, review }) => {
+const RatingModal: FC<RatingModalProps> = ({ isRatingModalOpen, setIsRatingModalOpen, review }) => {
   const dispatch = useAppDispatch();
   const [rating, setRating] = useState(1);
   const { userInfo } = useUserInfo();

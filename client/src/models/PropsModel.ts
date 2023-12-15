@@ -9,3 +9,9 @@ export type ChangePasswordModalProps = {
   isChangeModalOpen: boolean;
   setIsChangeModalOpen: any;
 };
+
+export type RatingModalProps = {
+  isRatingModalOpen: boolean;
+  setIsRatingModalOpen: React.Dispatch<React.SetStateAction<boolean>>;
+  review: string;
+};

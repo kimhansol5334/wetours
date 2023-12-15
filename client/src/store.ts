@@ -14,12 +14,14 @@ import userSignUpSlice from './features/users/userSignUpSlice';
 import signUpAuthSlice from './features/users/signUpAuthSlice';
 import userDeleteSlice from './features/users/userDeleteSlice';
 import userPasswordChangeSlice, { userPasswordChange } from './features/users/userPasswordChangeSlice';
+import allReviewSlice from './features/reviews/allReviewSlice';
 
 const rootReducer = combineReducers({
   tours: tourSlice,
   tour: tourUnitSlice,
   user: userUnitSlice,
   reviews: reviewSlice,
+  allreviews: allReviewSlice,
   login: loginSlice,
   trylogin: tryLoginSlice,
   auth: authSlice,
