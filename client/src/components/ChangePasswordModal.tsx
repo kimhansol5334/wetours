@@ -23,7 +23,7 @@ const ChangePasswordModal: FC<ChangePasswordModalProps> = ({ isChangeModalOpen, 
   const handleChangePassword = async () => {
     const actionResult = await dispatch(userPasswordChange({ pw, newPw, newPwConfirm }));
     if (userPasswordChange.fulfilled.match(actionResult)) {
-      alert('변경이 완료 되었습니다!');
+      alert('saved!');
       navigate(PATH.ROOT);
       //   logout();
     } else if (userPasswordChange.rejected.match(actionResult)) {
@@ -54,8 +54,8 @@ const ChangePasswordModal: FC<ChangePasswordModalProps> = ({ isChangeModalOpen, 
 
   if (!isChangeModalOpen) return null;
   return (
-    <div className=" fixed h-[100vh] top-0 left-0 bottom-0 right-0 bg-gray-300/60 z-999">
-      <div className="fixed z-1000 bg-white h-[60%] w-[30%] top-1/3 left-1/2 opacity-100 -translate-x-1/2 traslate-y-1/2 flex flex-col justify-around items-center p-10">
+    <div className=" fixed z-999 h-[100vh] top-0 left-0 bottom-0 right-0 bg-gray-300/60">
+      <div className="fixed flex flex-col justify-around items-center z-1000  h-[60%] w-[30%]  p-10  top-1/3 left-1/2 bg-white opacity-100 -translate-x-1/2 traslate-y-1/2 ">
         <button className="fixed z-1000 top-2 right-2" onClick={offModal}>
           x
         </button>

@@ -9,11 +9,8 @@ import Cookies from 'js-cookie';
 const Nav = () => {
   const logout = useLogout();
   const { userInfo } = useUserInfo();
-
   const userName = userInfo?.data.user.name;
   const userImage = userInfo?.data.user.photo;
-
-  console.log(userImage);
 
   return (
     <nav className=" flex justify-between items-center h-[10vh] p-8 bg-[#444444] text-white">

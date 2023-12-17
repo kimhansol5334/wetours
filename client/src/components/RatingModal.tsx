@@ -8,9 +8,9 @@ import { RatingModalProps } from '../models/PropsModel';
 
 const RatingModal: FC<RatingModalProps> = ({ isRatingModalOpen, setIsRatingModalOpen, review }) => {
   const dispatch = useAppDispatch();
-  const [rating, setRating] = useState(1);
   const { userInfo } = useUserInfo();
   const { tourId } = useReviewOnTour();
+  const [rating, setRating] = useState(1);
   const userId = userInfo?.data.user._id;
 
   const handleSliderChange = (event: React.ChangeEvent<HTMLInputElement>) => {
@@ -42,8 +42,8 @@ const RatingModal: FC<RatingModalProps> = ({ isRatingModalOpen, setIsRatingModal
   };
   if (!isRatingModalOpen) return null;
   return (
-    <div className=" fixed h-[100vh] top-0 left-0 bottom-0 right-0 bg-gray-300/60 z-999">
-      <div className="fixed z-1000 bg-white h-[30%] w-[30%] top-1/3 left-1/2 opacity-100 -translate-x-1/2 traslate-y-1/2 flex flex-col justify-around items-center p-10">
+    <div className=" fixed z-999 h-[100vh] top-0 left-0 bottom-0 right-0 bg-gray-300/60 ">
+      <div className="fixed flex flex-col justify-around items-center z-1000  h-[30%] w-[30%]  p-10  top-1/3 left-1/2 bg-white opacity-100 -translate-x-1/2 traslate-y-1/2 ">
         <button className="fixed z-1000 top-2 right-2" onClick={offRatingModal}>
           x
         </button>
@@ -58,7 +58,7 @@ const RatingModal: FC<RatingModalProps> = ({ isRatingModalOpen, setIsRatingModal
             step="0.1"
             value={rating}
             onChange={handleSliderChange}
-            className="slider w-full h-2 bg-gray-200 rounded-lg appearance-none cursor-pointer"
+            className=" h-2 w-full bg-gray-200 rounded-lg appearance-none cursor-pointer"
           />
           <div className="text-lg font-semibold mt-2">{rating.toFixed(1)} ★</div>
         </div>

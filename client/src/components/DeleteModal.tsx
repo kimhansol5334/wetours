@@ -33,8 +33,8 @@ const DeleteModal: FC<DeleteModalProps> = ({ isDeleteModalOpen, setIsDeleteModal
 
   if (!isDeleteModalOpen) return null;
   return (
-    <div className=" fixed h-[100vh] top-0 left-0 bottom-0 right-0 bg-gray-300/60 z-999">
-      <div className="fixed z-1000 bg-white h-[30%] w-[30%] top-1/3 left-1/2 opacity-100 -translate-x-1/2 traslate-y-1/2 flex flex-col justify-center items-center">
+    <div className="fixed z-999 h-[100vh] top-0 left-0 bottom-0 right-0 bg-gray-300/60">
+      <div className="fixed flex flex-col justify-around items-center z-1000  h-[30%] w-[30%]  p-10  top-1/3 left-1/2 bg-white opacity-100 -translate-x-1/2 traslate-y-1/2 ">
         <button className="fixed z-1000 top-2 right-2" onClick={offModal}>
           x
         </button>

@@ -1,4 +1,5 @@
-import React, { FC, useCallback } from 'react';
+import React, { FC, useCallback, useState, useEffect } from 'react';
+import axios from 'axios';
 import { TourProps } from '../../models/tourModels';
 import { useBooking } from '../../hooks/useBooking';
 
@@ -7,9 +8,20 @@ const DetailBookingContainer: FC<TourProps> = ({ tour }) => {
 
   const { data, error, loading } = useBooking(id);
 
-  const handleBooking = useCallback(() => {
-    if (data?.session?.url) {
-      window.open(data.session.url, '_blank', 'noopener, noreferrer');
+  const handleBooking = useCallback(async () => {
+    try {
+      const response = await axios.get(`${process.env.REACT_APP_API_URL}/bookings/check-reservation/${id}`, {
+        withCredentials: true,
+      });
+      if (data?.session?.url) {
+        window.open(data.session.url, '_blank', 'noopener, noreferrer');
+      }
+    } catch (error: any) {
+      if (error.response && error.response.status === 409) {
+        alert('you have already booked!');
+      } else {
+        console.error(error);
+      }
     }
   }, [data]);
 

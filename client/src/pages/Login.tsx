@@ -27,7 +27,6 @@ const Login = () => {
       dispatch(tryLogin({ id, pw }));
     }
   }, [userInfo]);
-  console.log(userInfo?.data.user.photo);
 
   return (
     <div className="bg-default h-[100vh] flex-all-center">

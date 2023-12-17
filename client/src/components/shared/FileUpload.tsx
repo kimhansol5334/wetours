@@ -21,7 +21,7 @@ const FileUpload: React.FC = () => {
       setImagePreviewUrl(newImagePreviewUrl);
     } else {
       setFile(null);
-      setImagePreviewUrl('기본 이미지 URL 또는 초기값');
+      setImagePreviewUrl('');
     }
   };
 
@@ -58,12 +58,12 @@ const FileUpload: React.FC = () => {
     <form onSubmit={handleSubmit} className="h-48 w-48 relative">
       <input type="file" onChange={handleFileChange} className="hidden" id="fileInput" />
       <label htmlFor="fileInput">
-        <img src={imagePreviewUrl} className="rounded-full object-cover w-full h-full border-2 border-pink-300" />
+        <img src={imagePreviewUrl} className="h-full w-full rounded-full object-cover border-2 border-pink-300" />
       </label>
       {file && (
         <button
           type="submit"
-          className="absolute right-0 py-2 px-4 bg-green-500 opacity-80 text-white text-sm font-light rounded-md  hover:shadow-custom"
+          className="absolute right-0 px-4 py-2 bg-green-500 opacity-80 text-white text-sm font-light rounded-md  hover:shadow-custom"
         >
           Save
         </button>

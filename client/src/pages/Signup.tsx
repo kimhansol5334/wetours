@@ -32,8 +32,8 @@ const Signup = () => {
   }, [error, data]);
 
   return (
-    <div className="bg-default h-[100vh] flex-all-center">
-      <div className="p-20 bg-white shadow-2xl w-[50%] h-[90%]">
+    <div className="flex-all-center h-[100vh] bg-default ">
+      <div className="h-[90%] w-[50%] p-20 bg-white shadow-2xl">
         <div className="mb-5 text-xl font-medium bg-gradient-to-r from-end to-start gradient-text">
           CREATE YOUR ACCOUNT
         </div>

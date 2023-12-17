@@ -51,8 +51,6 @@ const Review = () => {
     } else setIsRatingModalOpen(true);
   };
 
-  // console.log(dataLength);
-
   return (
     <div className="relative h-[140vh] p-20">
       <div className="absolute h-full w-full bottom-0 left-0  bg-green-400 opacity-30 "></div>
@@ -73,7 +71,7 @@ const Review = () => {
             <img
               src={`${process.env.REACT_APP_SERVER_URL}/public/img/users/${review.user.photo}`}
               alt="profile"
-              className="w-12 mr-4 rounded-full skew-x-12 border border-green-400"
+              className="w-12 h-12 mr-4 rounded-full object-cover  skew-x-12 border border-green-400"
             ></img>
             <div className="skew-x-12">{review.review}</div>
             <div className="absolute flex-all-center right-5 bottom-2">
@@ -87,7 +85,7 @@ const Review = () => {
         {pageNumber > 1 && (
           <button
             onClick={handlePageDown}
-            className=" border-none relative m-3 p-3 z-10 bg-none text-green-800 border text-xl"
+            className="relative m-3 p-3 z-10 bg-none text-green-800 border border-none text-xl"
             value="1"
           >
             ← PREV
@@ -96,7 +94,7 @@ const Review = () => {
         {pageNumber < dataLength / 5 && (
           <button
             onClick={handlePageUp}
-            className="border-none  relative m-3 p-3 z-10 bg-none text-green-800 border text-xl"
+            className="relative m-3 p-3 z-10 bg-none text-green-800 border border-none text-xl"
             value="1"
           >
             NEXT →
@@ -109,7 +107,7 @@ const Review = () => {
           className="h-12 w-12 mr-2 rounded-full"
         ></img>
         <input
-          className="w-[70%] h-[20%] bg-transparent m-5 p-5 border-b border-black focus:outline-none focus:border-pink-400"
+          className="w-[70%] h-[20%] m-5 p-5 bg-transparent border-b border-black focus:outline-none focus:border-pink-400"
           value={review}
           onChange={handleReview}
           placeholder="leave your comment.."

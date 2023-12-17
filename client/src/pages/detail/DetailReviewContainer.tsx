@@ -28,7 +28,7 @@ const DetailReviewContainer: FC<DetailProps> = ({ tour, slug }) => {
             <img
               src={`${process.env.REACT_APP_SERVER_URL}/public/img/users/${review.user.photo}`}
               alt="profile"
-              className="w-12 mr-4 border border-green-400 rounded-full skew-x-12 shadow-xl"
+              className="w-12 h-12 object-cover mr-4 border border-green-400 rounded-full skew-x-12 shadow-xl"
             ></img>
             <div className="skew-x-12">{review.review}</div>
             <div className="absolute text-gray-500 text-xs bottom-2 right-5">{review.user.name}</div>

@@ -14,8 +14,10 @@ const userRouter = require("./routes/userRoutes");
 const reviewRouter = require("./routes/reviewRoutes");
 const bookingRouter = require("./routes/bookingRoutes");
 const cookieParser = require('cookie-parser');
+const bookingController = require('./controllers/bookingController')
 
 const app = express();
+
 
 app.use('/public', express.static('public'));
 app.enable('trust proxy');
@@ -53,6 +55,9 @@ const limiter = rateLimit({
 
 app.use('/api', limiter);
 
+app.post('/api/v1/bookings/webhook-checkout',express.raw({type: 'application/json'}), bookingController.webhookCheckout);
+
+
 app.use(express.json({limit: '10kb'}));
 
 // Data sanitization against NOSQL query injection
@@ -89,6 +94,7 @@ app.use("/api/v1/tours", tourRouter);
 app.use("/api/v1/users", userRouter);
 app.use("/api/v1/reviews", reviewRouter);
 app.use("/api/v1/bookings", bookingRouter);
+
 
 app.all('*', (req, res, next) => {
   // res.status(404).json({
